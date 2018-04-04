@@ -19,12 +19,12 @@
  * Portions of this library are based on usb-serial-for-android (https://github.com/mik3y/usb-serial-for-android).
  * Portions of this library are based on Xamarin USB Serial for Android (https://bitbucket.org/lusovu/xamarinusbserial).
  */
-using System;
-using System.Threading;
 using Android.Hardware.Usb;
 using Android.Util;
-using System.Threading.Tasks;
 using Hoho.Android.UsbSerial.Driver;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Hoho.Android.UsbSerial.Extensions
 {
@@ -84,7 +84,8 @@ namespace Hoho.Android.UsbSerial.Extensions
             var cancelationToken = cancelationTokenSource.Token;
             cancelationToken.Register(() => Log.Info(TAG, "Cancellation Requested"));
 
-            Task.Run(() => {
+            Task.Run(() =>
+            {
                 Log.Info(TAG, "Task Started!");
                 try
                 {
@@ -106,9 +107,9 @@ namespace Hoho.Android.UsbSerial.Extensions
                 }
                 finally
                 {
-                    port.Close();
-                    buffer = null;
-                    isOpen = false;
+                    //port.Close();
+                    //buffer = null;
+                    //isOpen = false;
                     Log.Info(TAG, "Task Ended!");
                 }
             }, cancelationToken);
